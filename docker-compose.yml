@@ -1,0 +1,27 @@
+services:
+  pgsql:
+    image: postgres:16
+    container_name: games_crm_db
+    restart: unless-stopped
+    ports:
+      - "5433:5432"
+    environment:
+      POSTGRES_DB: games_crm
+      POSTGRES_USER: laravel
+      POSTGRES_PASSWORD: secret
+      POSTGRES_HOST_AUTH_METHOD: md5
+      POSTGRES_INITDB_ARGS: "--auth-host=md5"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  face-service:
+    build:
+      context: ./face-service
+      dockerfile: Dockerfile
+    container_name: games_crm_face
+    restart: unless-stopped
+    ports:
+      - "5001:5000"
+
+volumes:
+  pgdata:
