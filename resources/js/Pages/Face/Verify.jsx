@@ -93,7 +93,7 @@ export default function Verify({ hasEnrolled }) {
 
                         {captured && (
                             <div className="space-y-3">
-                                <img src={captured} alt="Vista previa" className="w-full rounded border" />
+                                <img src={captured} alt="Vista previa" className="w-full rounded border" style={{ transform: 'scaleX(-1)' }} />
                                 <form onSubmit={submit} className="space-y-3">
                                     {errors.image && <p className="text-red-600 text-sm">{errors.image}</p>}
                                     <button
