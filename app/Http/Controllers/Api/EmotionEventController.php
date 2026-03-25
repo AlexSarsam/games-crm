@@ -15,7 +15,7 @@ class EmotionEventController extends Controller
      * Registra un evento emocional durante una sesión de juego.
      * El cliente (navegador con face-api.js) llama a este endpoint cada N segundos.
      */
-    public function store(Request $request, int $gameId, GameSession $session)
+    public function store(Request $request, GameSession $session)
     {
         // Solo el propietario de la sesión puede registrar emociones
         if ($session->user_id !== auth()->id()) {

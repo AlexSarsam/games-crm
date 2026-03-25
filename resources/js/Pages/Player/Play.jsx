@@ -41,7 +41,7 @@ export default function PlayerPlay({ game }) {
             faceapi.nets.faceExpressionNet.loadFromUri('/models'),
         ])
             .then(() => setModelsLoaded(true))
-            .catch(() => {});
+            .catch(() => setError('Detección de emociones no disponible.'));
     }, []);
 
     // Start game session

@@ -183,6 +183,12 @@ export default function AuthenticatedLayout({ header, children }) {
                             <ResponsiveNavLink href={route('profile.edit')}>
                                 Profile
                             </ResponsiveNavLink>
+                            <ResponsiveNavLink href={route('face.enroll')}>
+                                Registro Facial
+                            </ResponsiveNavLink>
+                            <ResponsiveNavLink href={route('face.verify')}>
+                                Verificación Facial
+                            </ResponsiveNavLink>
                             <ResponsiveNavLink
                                 method="post"
                                 href={route('logout')}
