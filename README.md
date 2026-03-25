@@ -18,7 +18,7 @@ La base de datos tiene cinco tablas principales. La tabla `users` guarda los usu
 
 Las relaciones entre tablas se definen con Eloquent ORM. Un usuario pertenece a un rol, un juego pertenece al usuario que lo creó, una sesión pertenece a un usuario y a un juego, y los eventos de emoción pertenecen a una sesión.
 
-El seeder crea automáticamente tres roles, tres usuarios de prueba (admin, gestor y jugador, todos con la contraseña `password`) y dos juegos de ejemplo ya publicados.
+El seeder crea automáticamente tres roles, tres usuarios de prueba (admin, gestor y jugador, todos con la contraseña `password`) y un juego de ejemplo ya publicado (Runner 3D).
 
 ---
 
@@ -47,6 +47,8 @@ Los administradores y gestores tienen un panel donde pueden crear juegos nuevos 
 ## Reconocimiento facial y detección de emociones
 
 Antes de jugar, el sistema pide al jugador que se identifique con la cámara. Laravel envía la foto del perfil del usuario y la captura actual al microservicio Python, que las compara con DeepFace y devuelve si coinciden o no. Laravel toma la decisión final de dejarle pasar o no. El microservicio no sabe nada de usuarios ni sesiones, solo compara dos imágenes.
+
+La primera vez que se usa la verificación facial el microservicio descarga los modelos de reconocimiento (~500 MB) y puede tardar 1-2 minutos en responder. Es normal que el botón de verificar parezca que no hace nada durante ese tiempo.
 
 Durante la partida, la webcam analiza la expresión facial del jugador cada pocos segundos usando face-api.js, que corre completamente en el navegador. No se mandan fotos al servidor, solo la emoción detectada, el nivel de confianza y el momento en que ocurrió. Esos datos se guardan en `emotion_events` y permiten saber cómo reacciona el jugador durante el juego.
 
