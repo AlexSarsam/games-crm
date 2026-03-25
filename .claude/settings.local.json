@@ -1,8 +1,0 @@
-{
-  "permissions": {
-    "allow": [
-      "Bash(xargs ls:*)",
-      "Bash(find /d/games-crm/public/Runner3D -maxdepth 3 -type f ! -path */node_modules/* ! -path */.DS_Store ! -name package-lock.json)"
-    ]
-  }
-}
