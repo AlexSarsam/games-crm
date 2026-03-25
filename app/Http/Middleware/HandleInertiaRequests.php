@@ -26,6 +26,12 @@ class HandleInertiaRequests extends Middleware
             'auth' => [
                 'user' => $request->user()?->load('role'),
             ],
+            'flash' => [
+                'verified'  => $request->session()->get('verified'),
+                'distance'  => $request->session()->get('distance'),
+                'threshold' => $request->session()->get('threshold'),
+                'success'   => $request->session()->get('success'),
+            ],
         ];
     }
 }
